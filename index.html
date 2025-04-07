@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WayFinder Final Pro</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div id="app">
+    <!-- HEADER -->
+    <header class="app-header" id="main-header" style="display:none;">
+      <h1>📍 WayFinder</h1>
+      <nav class="app-nav">
+        <button onclick="switchPage('dashboard')">🏠 Home</button>
+        <button onclick="switchPage('profile')">👤 Profile</button>
+        <button onclick="switchPage('settings')">⚙️ Settings</button>
+        <button onclick="logout()">🔓 Logout</button>
+      </nav>
+    </header>
+
+    <!-- LOGIN -->
+    <section id="login-page" class="page active">
+      <h1>WayFinder Login</h1>
+      <input type="text" id="riderName" placeholder="Enter Rider Name"/>
+      <button onclick="login()">Login</button>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard-page" class="page">
+      <h2>Welcome, <span id="userName"></span> 👋</h2>
+      <div class="card">
+        <h3>📦 Delivery Request</h3>
+        <input type="text" id="manualAddress" placeholder="Enter unit or address manually"/>
+        <label for="destination">Select Destination:</label>
+        <select id="destination" onchange="updateUnit()">
+          <option value="03-27">Unit #03-27</option>
+          <option value="04-15">Unit #04-15</option>
+          <option value="05-09">Unit #05-09</option>
+        </select>
+        <button onclick="switchPage('map-select')">🗺️ Choose from Map</button>
+      <option value="">-- Select a Location --</option>
+      <option value="04-15">#04-15 (North Wing)</option>
+      <option value="02-08">#02-08 (South Lobby)</option>
+      <option value="05-21">#05-21 (Tower B)</option>
+    </select>
+    <div class="button-group">
+          <button onclick="startNavigation()">🚀 Navigate</button>
+          <button onclick="contributeRoute()">🎮 Contribute</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORDER -->
+    <section id="order-page" class="page">
+      <h2 id="historyTitle">Order History</h2>
+      <ul id="orderHistoryList">
+        <li>🕒 09:45 AM – Delivered to #04-15 ✅</li>
+        <li>🕒 11:20 AM – Delivered to #02-08 ✅</li>
+        <li>🕒 02:05 PM – Failed to deliver #05-21 ❌ (No access)</li>
+        <li>🕒 03:30 PM – Delivered to #03-27 ✅</li>
+        <li>🕒 05:10 PM – Retried at #05-21 ✅</li>
+      </ul>
+      <p><strong>History:</strong></p>
+      <ul>
+        <li>🕒 09:45 AM – Delivered to #04-15 ✅</li>
+        <li>🕒 11:20 AM – Delivered to #02-08 ✅</li>
+        <li>🕒 02:05 PM – Failed to deliver #05-21 ❌ (No access)</li>
+        <li>🕒 03:30 PM – Delivered to #03-27 ✅</li>
+        <li>🕒 05:10 PM – Retried at #05-21 ✅</li>
+      </ul>
+      <button onclick="switchPage('dashboard')">⬅️ Back</button>
+      <p><strong>History:</strong></p>
+      <ul>
+        <li>🕒 09:45 AM – Delivered to #04-15</li>
+        <li>🕒 11:20 AM – Delivered to #02-08</li>
+        <li>🕒 02:05 PM – Delivered to #05-21</li>
+      </ul>
+      <button onclick="switchPage('dashboard')">⬅️ Back</button>
+      <h2>Order Details</h2>
+      <p><strong>Pickup:</strong> Lobby A</p>
+      <p><strong>Destination:</strong> Unit #03-27</p>
+      <p><strong>Order ID:</strong> WF39418</p>
+    </section>
+
+    <!-- MAP -->
+    <section id="map-page" class="page">
+      <button onclick="switchPage('dashboard')">⬅️ Back</button>
+      <h2>Indoor Navigation</h2>
+      <img src="assets/room.png" class="map"/>
+      <p>Step 1: Proceed to Elevator</p>
+      <p>Step 2: Take Elevator to Level 3</p>
+      <p>Step 3: Turn right and arrive at <span id="target-destination">#03-27</span></p>
+    </section>
+
+    <!-- CONTRIBUTE -->
+    <section id="contribute-page" class="page">
+      <button onclick="switchPage('dashboard')">⬅️ Back</button>
+      <h2>Contribute Route</h2>
+      <p>🎮 Simulated Contribution Submitted!</p>
+      <p>+5 XP gained 💥</p>
+      <img src="assets/badge.png" class="badge"/>
+      <p>Weekly Rank: #12</p>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="profile-page" class="page">
+      <button onclick="switchPage('dashboard')">⬅️ Back</button>
+      <h2>Your Profile</h2>
+      <p>👤 Rider: <strong id="profileName"></strong></p>
+      <p>📦 Deliveries Completed: 18</p>
+      <p>🎯 XP: 150</p>
+      <p>🏅 Badge: Expert Navigator</p>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="settings-page" class="page">
+      
+      
+      <br/>
+      <label for="language">🌐 Language:</label>
+      <select id="language">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+        <option value="ms">Malay</option>
+      </select>
+      <br/><br/>
+      <button onclick="switchPage('dashboard')">⬅️ Back</button>
+      <h2>App Settings</h2>
+      <label><input type="checkbox" checked/> Notifications</label><br/>
+      <label><input type="checkbox"/> Auto-Sync Route Data</label>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+    <!-- MAP SELECT PAGE -->
+    <section id="map-select-page" class="page">
+      <h2>Select Unit from Building Map</h2>
+      <img src="assets/floorplan.png" usemap="#unitmap" class="map"/>
+      <map name="unitmap">
+        <area shape="rect" coords="50,50,150,120" alt="#02-08" onclick="setMapDestination('02-08')">
+        <area shape="rect" coords="160,50,260,120" alt="#03-27" onclick="setMapDestination('03-27')">
+        <area shape="rect" coords="270,50,370,120" alt="#05-21" onclick="setMapDestination('05-21')">
+        <area shape="rect" coords="380,50,480,120" alt="#04-15" onclick="setMapDestination('04-15')">
+      </map>
+      <button onclick="switchPage('dashboard')">⬅️ Back</button>
+    </section>

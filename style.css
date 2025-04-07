@@ -1,0 +1,107 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #eef2f7;
+}
+
+#app {
+  max-width: 420px;
+  margin: auto;
+  background: white;
+  border-radius: 10px;
+  padding: 10px 20px 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+header.app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0077cc;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.4em;
+}
+
+.app-nav {
+  margin-top: 8px;
+}
+
+.app-nav button {
+  background: white;
+  color: #0077cc;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin: 2px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+h1, h2, h3 {
+  color: #0055aa;
+}
+
+.card {
+  background: #f8fbff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 15px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-group button {
+  flex: 1;
+  margin: 5px;
+  font-size: 1em;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005fc1;
+}
+
+.map {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.badge {
+  width: 100px;
+  margin: 15px auto;
+  display: block;
+}
